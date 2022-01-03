@@ -15,8 +15,10 @@ export function Header() {
             <a>Posts</a>
           </Link>
         </nav>
+        <div className={styles.buttonContainer}>
+          <Player />
+        </div>
       </div>
-      <Player />
     </header>
   );
 }
