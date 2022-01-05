@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ActiveLink } from "../ActiveLink";
 import Player from "../Player";
 import styles from "./styles.module.scss";
 
@@ -8,12 +8,15 @@ export function Header() {
       <div className={styles.headerContent}>
         <img className={styles.headerImg} src="/podcast.png" alt="RAdio Web" />
         <nav>
-          <Link href="/">
+          <ActiveLink activeClassName={styles.active} href="/">
             <a>Home</a>
-          </Link>
-          <Link href="/" prefetch>
+          </ActiveLink>
+          <ActiveLink activeClassName={styles.active} href="/posts" prefetch>
             <a>Posts</a>
-          </Link>
+          </ActiveLink>
+          <ActiveLink activeClassName={styles.active} href="/noticias" prefetch>
+            <a>Noticias</a>
+          </ActiveLink>
         </nav>
         <div className={styles.buttonContainer}>
           <Player />

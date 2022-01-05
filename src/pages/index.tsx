@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { DonateButton } from "../components/DonateButton";
 import Whatssap from "../components/Whatssap";
 import styles from "./home.module.scss";
 
@@ -10,15 +11,16 @@ export default function Home() {
       </Head>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
-          <span>Bem Vindo</span>
+          <span>Seja Bem Vindo</span>
           <h1>
             Web Radio <br />
             feita <span>Para Você</span> e todo o Mundo
           </h1>
           <p>
-            Veja todas as nossas publicações <br />
-            <span>por R$ 9,99</span>
+            Ajude a Permanecer no AR <br />
+            <span>Faça sua Doação por R$ 9,99</span>
           </p>
+          <DonateButton />
         </section>
 
         <img
