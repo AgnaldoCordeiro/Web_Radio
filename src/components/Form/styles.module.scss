@@ -1,0 +1,33 @@
+.contentContainer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: calc(100vh);
+  background-color: white;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+}
+.FormContainer {
+  padding: 2rem;
+  display: grid;
+  gap: 0.5rem;
+
+  button {
+    padding: 0.75rem 2rem;
+    margin: 2rem auto;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 1.85rem;
+    background-color: var(--yellow-500);
+
+    transition: filter 0.2s;
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+}

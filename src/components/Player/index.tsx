@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
+import { IoPauseCircleSharp, IoPlayCircleSharp } from "react-icons/io5";
 
 export default function Player() {
   const audioRef = useRef(null);
@@ -31,11 +32,11 @@ export default function Player() {
       <div>
         {isPlaying ? (
           <button className={styles.pause} onClick={toggleIsPlaying}>
-            Pause
+            <IoPauseCircleSharp className={styles.hero} />
           </button>
         ) : (
           <button className={styles.player} onClick={toggleIsPlaying}>
-            Play
+            <IoPlayCircleSharp className={styles.hero} />
           </button>
         )}
       </div>

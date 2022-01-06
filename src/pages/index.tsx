@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { DonateButton } from "../components/DonateButton";
+import { FormularioContato } from "../components/Form";
 import Whatssap from "../components/Whatssap";
 import styles from "./home.module.scss";
 
@@ -30,6 +31,7 @@ export default function Home() {
         />
       </main>
       <Whatssap />
+      <FormularioContato />
     </>
   );
 }
