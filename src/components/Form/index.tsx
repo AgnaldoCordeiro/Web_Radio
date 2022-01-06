@@ -3,22 +3,22 @@ import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import styles from "./styles.module.scss";
+import { TextareaAutosize } from "@material-ui/core";
 
 const validationSchema = yup.object({
   email: yup
     .string("Enter your email")
     .email("Enter a valid email")
     .required("Email is required"),
-  password: yup
-    .string("Enter your password")
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
+  name: yup.string("Enter you Name").required("Name is required"),
+  telefone: yup.string("Enter your telefone").required("Telefone is required"),
 });
 export function FormularioContato() {
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
-      password: "foobar",
+      email: "",
+      telefone: "",
+      name: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -42,14 +42,32 @@ export function FormularioContato() {
         />
         <TextField
           fullWidth
-          id="password"
-          name="password"
-          label="Password"
-          type="password"
-          value={formik.values.password}
+          id="name"
+          name="name"
+          label="Name"
+          type="text"
+          value={formik.values.name}
           onChange={formik.handleChange}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+        />
+        <TextField
+          fullWidth
+          id="telefone"
+          name="telefone"
+          label="Telefone"
+          type="text"
+          value={formik.values.telefone}
+          onChange={formik.handleChange}
+          error={formik.touched.telefone && Boolean(formik.errors.telefone)}
+          helperText={formik.touched.telefone && formik.errors.telefone}
+        />
+        <TextareaAutosize
+          maxRows={500}
+          aria-label="maximum height"
+          placeholder="Deixe sua Menssagem"
+          defaultValue=""
+          style={{ width: 1000, height: 100 }}
         />
         <Button color="primary" variant="contained" fullWidth type="submit">
           Submit
