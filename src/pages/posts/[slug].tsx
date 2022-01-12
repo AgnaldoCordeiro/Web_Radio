@@ -3,13 +3,17 @@ import Head from "next/head";
 import { RichText } from "prismic-dom";
 import { getPrismicClient } from "../../services/prismic";
 import styles from "./post.module.scss";
+import { ParsedUrlQuery } from "querystring";
 
+interface IParams extends ParsedUrlQuery {
+  slug: string;
+}
 interface PostProps {
   post: {
-    slug: string;
-    title: string;
+    slug: String;
+    title: String;
     content: string;
-    updatedAt: string;
+    updatedAt: String;
   };
 }
 
@@ -33,21 +37,20 @@ export default function Post({ post }: PostProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  params,
-}) => {
-  const { slug } = params;
-
-  const prismic = getPrismicClient(req);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { slug } = context.params as IParams;
+  const prismic = getPrismicClient();
 
   const response = await prismic.getByUID("publications", String(slug), {});
 
   const post = {
     slug,
-    title: RichText.asText(response.data.title),
-    content: RichText.asHtml(response.data.content),
-    updatedAt: new Date(response.last_publication_date).toLocaleDateString(
+    //@ts-ignore
+    title: RichText.asText(response?.data.title),
+    //@ts-ignore
+    content: RichText.asHtml(response?.data.content),
+    //@ts-ignore
+    updatedAt: new Date(response?.last_publication_date).toLocaleDateString(
       "pt-BR",
       {
         day: "2-digit",

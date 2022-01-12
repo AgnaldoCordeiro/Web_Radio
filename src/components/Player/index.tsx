@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { IoPauseCircleSharp, IoPlayCircleSharp } from "react-icons/io5";
 
 export default function Player() {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
 
